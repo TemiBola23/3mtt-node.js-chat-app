@@ -1,28 +1,44 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Chat App</title>
+  <meta charset="UTF-8">
+  <title>Scalable Chat App</title>
   <style>
-    body { font-family: Arial; }
-    #chat { height: 300px; overflow-y: scroll; border: 1px solid #ccc; margin-bottom: 10px; padding: 5px; }
+    body { font-family: Arial, sans-serif; max-width: 640px; margin: auto; }
+    #chat { height: 350px; overflow-y: scroll; border: 1px solid #ccc; padding: 8px; background: #f9f9f9; }
+    #message { width: 80%; }
+    button { width: 18%; }
   </style>
 </head>
 <body>
-  <h2>Chat App</h2>
-  <select id="roomSelect">
-    <option value="general">General</option>
-    <option value="tech">Tech</option>
-    <option value="random">Random</option>
-  </select>
+  <h1>Scalable Chat App</h1>
+  <label>
+    Room:
+    <select id="roomSelect">
+      <option value="general">General</option>
+      <option value="tech">Tech</option>
+      <option value="random">Random</option>
+    </select>
+  </label>
   <div id="chat"></div>
-  <input id="message" autocomplete="off" /><button onclick="sendMessage()">Send</button>
+  <input id="message" placeholder="Type message…" autocomplete="off" />
+  <button onclick="sendMessage()">Send</button>
 
   <script src="/socket.io/socket.io.js"></script>
   <script>
     const socket = io();
     const chat = document.getElementById("chat");
-    const input = document.getElementById("message");
+    const msgInput = document.getElementById("message");
     const roomSelect = document.getElementById("roomSelect");
+
+    function addMessage(msg) {
+      const div = document.createElement("div");
+      const time = new Date(msg.timestamp).toLocaleTimeString();
+      div.textContent = `[${time}] ${msg.user}: ${msg.text}`;
+      chat.appendChild(div);
+      chat.scrollTop = chat.scrollHeight;
+    }
 
     socket.on("chatHistory", (messages) => {
       chat.innerHTML = "";
@@ -30,26 +46,19 @@
     });
 
     socket.on("chatMessage", addMessage);
-
-    socket.on("kicked", () => {
-      alert("You have been kicked by the admin.");
-    });
-
-    function addMessage(msg) {
-      const div = document.createElement("div");
-      div.textContent = `[${new Date(msg.timestamp).toLocaleTimeString()}] ${msg.user}: ${msg.text}`;
-      chat.appendChild(div);
-    }
-
-    function sendMessage() {
-      const message = input.value;
-      if (message.trim()) socket.emit("chatMessage", message);
-      input.value = "";
-    }
+    socket.on("kicked", () => alert("You have been kicked by the admin."));
 
     roomSelect.addEventListener("change", () => {
       socket.emit("joinRoom", roomSelect.value);
     });
+
+    function sendMessage() {
+      const txt = msgInput.value.trim();
+      if (txt) {
+        socket.emit("chatMessage", txt);
+        msgInput.value = "";
+      }
+    }
   </script>
 </body>
 </html>
