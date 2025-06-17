@@ -1,8 +1,8 @@
-# Node.js Real-Time Chat App
+# Node.js Scalable Chat App
 
 ## Overview
 
-This project is a real-time chat application built with Node.js, Express, and Socket.IO. It demonstrates the use of Node.js’s event-driven, non-blocking I/O model and showcases how it handles multiple concurrent connections efficiently.
+This is a scalable real-time chat application using Node.js, Express, and Socket.IO.
 
 ## Features
 
