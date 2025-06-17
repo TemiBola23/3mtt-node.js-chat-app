@@ -1,7 +1,6 @@
 {
-  "name": "chat-app",
+  "name": "scalable-chat-app",
   "version": "1.0.0",
-  "description": "A simple real-time chat app using Node.js and Socket.IO",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
