@@ -1,20 +1,25 @@
-# Chat App Architecture and Scalability Report
+# Node.js Scalable Chat App
 
-## Architecture
+This is a real-time chat application built with Node.js, Socket.IO, and Express. It supports:
+- Multiple chat rooms
+- Persistent chat history (`db.json`)
+- Admin command to kick users
 
-- **Backend**: Express + Socket.IO
-- **Frontend**: HTML + Vanilla JS
-- **Data Storage**: Simple `db.json` file for chat history
+## Setup
 
-## Node.js Principles Applied
-- **Non-blocking I/O**: Real-time message broadcasting
-- **Scalability**: Modular room system, could scale with Redis/DB
-- **Real-world Use**: Basis for scalable messaging apps
+```bash
+npm install
+node server.js
+```
+
+Visit `http://localhost:3000` in your browser.
 
 ## Features
-- Persistent message storage
-- Chat rooms
-- Admin tools (kick user)
+- Switchable chat rooms
+- Messages persist via `db.json`
+- Admin feature: `/kick <socketId>` removes a user
 
-## Performance Testing
-Simulated load with 100 socket connections – no crash, low memory impact
+## File Structure
+- `server.js` – Node server with Socket.IO and persistence
+- `public/` – Frontend files
+- `db.json` – JSON-based chat history storage
