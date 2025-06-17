@@ -34,11 +34,3 @@ The chat app leverages:
    ```
    http://localhost:3000
    ```
-
-## Files
-
-- `server.js`: Main server file using Express and Socket.IO.
-- `public/index.html`: Client-side UI.
-- `public/chat.js`: Handles client socket events.
-- `public/styles.css`: Basic UI styling.
-- `NodeJS_ChatApp_Report.md`: Full written report.
