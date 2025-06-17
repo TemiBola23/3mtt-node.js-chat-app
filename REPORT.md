@@ -1,16 +1,20 @@
-# REPORT.md
+# Chat App Architecture and Scalability Report
 
-## Node.js Architecture
-(Details go here...)
+## Architecture
 
-## Scalability Features
-(Comparison table...)
+- **Backend**: Express + Socket.IO
+- **Frontend**: HTML + Vanilla JS
+- **Data Storage**: Simple `db.json` file for chat history
 
-## Pros and Cons
-(Discussion...)
+## Node.js Principles Applied
+- **Non-blocking I/O**: Real-time message broadcasting
+- **Scalability**: Modular room system, could scale with Redis/DB
+- **Real-world Use**: Basis for scalable messaging apps
 
-## Real-world Use Cases
-(Examples...)
+## Features
+- Persistent message storage
+- Chat rooms
+- Admin tools (kick user)
 
-## Performance Test Metrics
-(Autocannon results...)
+## Performance Testing
+Simulated load with 100 socket connections – no crash, low memory impact
