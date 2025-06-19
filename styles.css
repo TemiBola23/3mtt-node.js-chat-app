@@ -1,0 +1,69 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background: #2c3e50;
+  color: white;
+  padding: 20px;
+}
+
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  background: #f5f5f5;
+}
+
+.admin-message {
+  color: red;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+#message-form {
+  display: flex;
+  padding: 10px;
+}
+
+#message-input {
+  flex: 1;
+  padding: 8px;
+}
+
+button {
+  padding: 8px 15px;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#rooms li {
+  cursor: pointer;
+  padding: 5px;
+}
+
+#rooms li.active {
+  background: #3498db;
+}
