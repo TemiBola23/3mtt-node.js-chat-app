@@ -1,20 +1,15 @@
+
 {
-  "name": "scalable-chat-app",
+  "name": "node-chat-app",
   "version": "1.0.0",
-  "description": "Node.js scalable chat app with rooms, persistence, and admin commands",
+  "description": "Scalable Node.js chat application",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test-load": "autocannon -c 100 -d 10 http://localhost:3000"
+    "test": "autocannon -c 100 -d 30 http://localhost:3000"
   },
-  "keywords": ["nodejs", "socket.io", "chat", "scalable"],
-  "author": "Temitope Bolatito",
-  "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
     "socket.io": "^4.7.2"
-  },
-  "devDependencies": {
-    "autocannon": "^7.10.0"
   }
 }
