@@ -1,0 +1,26 @@
+!DOCTYPE html>
+html>
+head>
+  title>Admin Panel/title>
+  script src="/socket.io/socket.io.js">/script>
+/head>
+body>
+  h1>Admin Controls/h1>
+  div>
+    input type="text" id="broadcast-message" placeholder="Broadcast message">
+    button id="broadcast-btn">Broadcast/button>
+  /div>
+  
+  script>
+    const socket = io('/admin');
+    
+    document.getElementById('broadcast-btn').addEventListener('click', () => {
+      const message = document.getElementById('broadcast-message').value;
+      if (message.trim()) {
+        socket.emit('broadcast', message);
+        document.getElementById('broadcast-message').value = '';
+      }
+    });
+  /script>
+/body>
+/html>
